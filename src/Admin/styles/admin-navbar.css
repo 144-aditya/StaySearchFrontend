@@ -1,0 +1,243 @@
+/* ============================================
+   SIMPLE SKY BLUE & WHITE ADMIN NAVBAR CSS
+   ============================================ */
+
+:root {
+  --navbar-primary: #3b82f6;
+  --navbar-primary-dark: #2563eb;
+  --navbar-white: #ffffff;
+  --navbar-gray: #64748b;
+  --navbar-gray-light: #e2e8f0;
+  --navbar-danger: #ef4444;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* Admin Navbar */
+.admin-navbar {
+  background: var(--navbar-primary);
+  padding: 0 1.5rem;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Navbar Container */
+.admin-navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Logo Section */
+.admin-navbar-logo h2 {
+  color: var(--navbar-white);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Menu Section */
+.admin-navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Navigation Icons */
+.nav-icon {
+  background: transparent;
+  border: none;
+  color: var(--navbar-white);
+  font-size: 1.125rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* User Info Section */
+.admin-user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.375rem 0.75rem 0.375rem 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2rem;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.admin-user-info:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* User Avatar */
+.admin-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--navbar-white);
+  color: var(--navbar-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+/* User Name */
+.admin-user-info span {
+  color: var(--navbar-white);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Logout Button */
+.logout-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: var(--navbar-white);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.logout-btn:hover {
+  background: var(--navbar-danger);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .admin-navbar {
+    padding: 0 1.25rem;
+  }
+  
+  .admin-navbar-logo h2 {
+    font-size: 1.125rem;
+  }
+}
+
+/* Mobile (up to 768px) */
+@media (max-width: 768px) {
+  .admin-navbar {
+    padding: 0 1rem;
+  }
+  
+  .admin-navbar-container {
+    height: 56px;
+  }
+  
+  .admin-navbar-logo h2 {
+    font-size: 1rem;
+  }
+  
+  .admin-navbar-menu {
+    gap: 0.5rem;
+  }
+  
+  .nav-icon {
+    padding: 0.375rem;
+    font-size: 1rem;
+  }
+  
+  /* Hide user name on mobile */
+  .admin-user-info span {
+    display: none;
+  }
+  
+  .admin-user-info {
+    padding: 0.375rem;
+  }
+  
+  .admin-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+  
+  /* Hide logout text, show only icon */
+  .logout-btn span {
+    display: none;
+  }
+  
+  .logout-btn {
+    padding: 0.375rem;
+    border-radius: 0.5rem;
+  }
+}
+
+/* Small Mobile (up to 480px) */
+@media (max-width: 480px) {
+  .admin-navbar {
+    padding: 0 0.75rem;
+  }
+  
+  .admin-navbar-container {
+    height: 52px;
+  }
+  
+  .admin-navbar-logo h2 {
+    font-size: 0.875rem;
+  }
+  
+  .nav-icon {
+    padding: 0.25rem;
+    font-size: 0.875rem;
+  }
+  
+  .admin-avatar {
+    width: 26px;
+    height: 26px;
+    font-size: 0.6875rem;
+  }
+  
+  .logout-btn {
+    padding: 0.25rem;
+  }
+  
+  .logout-btn svg {
+    font-size: 0.875rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .admin-navbar {
+    position: static;
+    background: #f1f5f9;
+    print-color-adjust: exact;
+  }
+  
+  .admin-navbar-logo h2 {
+    color: #1e293b;
+  }
+  
+  .nav-icon,
+  .logout-btn {
+    display: none;
+  }
+}

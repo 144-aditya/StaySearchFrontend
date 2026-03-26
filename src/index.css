@@ -1,0 +1,24 @@
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body background image */
+body {
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+
+  background-image: url('./assets/images/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* React root */
+#root {
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4); /* dark overlay */
+}

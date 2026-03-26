@@ -1,0 +1,332 @@
+.view-details {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 25px auto;
+  background: #ffffff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-medium);
+}
+
+/* ===================== */
+/* Heading */
+/* ===================== */
+
+.view-details h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.view-details h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--hover-color));
+  border-radius: 2px;
+}
+
+/* ===================== */
+/* Common Section Styles */
+/* ===================== */
+
+.branch-section,
+.room-type-section,
+.room-details,
+.facilities,
+.book-now {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  border: 1px solid #dee2e6;
+  transition: var(--transition);
+}
+
+.branch-section:hover,
+.room-type-section:hover,
+.room-details:hover,
+.facilities:hover,
+.book-now:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--primary-color);
+}
+
+/* ===================== */
+/* Section Headers */
+/* ===================== */
+
+.branch-section h3,
+.room-type-section h3,
+.room-details h3,
+.facilities h3,
+.book-now h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 0.8rem;
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.branch-section h3 i,
+.room-type-section h3 i,
+.room-details h3 i,
+.facilities h3 i,
+.book-now h3 i {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+}
+
+/* ===================== */
+/* Branch Images */
+/* ===================== */
+
+.branch-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.branch-images img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  border: 2px solid #e0e0e0;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+}
+
+.branch-images img:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--primary-color);
+}
+
+/* ===================== */
+/* Room Type Section */
+/* ===================== */
+
+.room-type-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.room-type-images > div {
+  background: #ffffff;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  box-shadow: var(--shadow-light);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.room-type-images > div:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--primary-color);
+}
+
+.room-type-images img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+  border: 1px solid #e0e0e0;
+}
+
+.room-type-images p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+/* ===================== */
+/* Room Details */
+/* ===================== */
+
+.room-details p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  color: #495057;
+  background: #ffffff;
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--primary-color);
+  box-shadow: var(--shadow-light);
+}
+
+.room-details p i {
+  width: 30px;
+  font-size: 1.4rem;
+  color: var(--primary-color);
+}
+
+/* ===================== */
+/* Facilities */
+/* ===================== */
+
+.facilities ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.facilities li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem 1.2rem;
+  font-size: 1.2rem;
+  color: #495057;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+}
+
+.facilities li:hover {
+  background: #f8f9fa;
+  color: #2c3e50;
+  transform: translateY(-3px);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-medium);
+}
+
+.facilities li i {
+  width: 24px;
+  font-size: 1.4rem;
+  color: var(--primary-color);
+}
+
+/* ===================== */
+/* Book Now Section */
+/* ===================== */
+
+.book-now {
+  text-align: center;
+  background: linear-gradient(135deg, #f1f8ff, #e3f2fd);
+}
+
+.book-now button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto;
+  padding: 1.2rem 3rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--primary-color), var(--hover-color));
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+}
+
+.book-now button:hover {
+  transform: scale(1.05) translateY(-3px);
+  background: linear-gradient(135deg, var(--hover-color), #0277bd);
+  box-shadow: var(--shadow-medium);
+}
+
+.book-now button i {
+  transition: var(--transition);
+}
+
+.book-now button:hover i {
+  transform: translateX(5px);
+}
+
+/* ===================== */
+/* Form Styling */
+/* ===================== */
+
+.book-now form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.book-now .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.book-now label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #495057;
+  text-align: left;
+}
+
+.book-now input,
+.book-now select,
+.book-now textarea {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  color: #495057;
+  background: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.book-now input:focus,
+.book-now select:focus,
+.book-now textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.2);
+}
+
+.book-now textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.book-now .success-message {
+  padding: 2rem;
+  text-align: center;
+  border-radius: var(--border-radius);
+  border: 1px solid #c3e6cb;
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  color: #155724;
+}
+
+.book-now .success-message i {
+  font-size: 3rem;
+  color: #28a745;
+  margin-bottom: 1rem;
+}

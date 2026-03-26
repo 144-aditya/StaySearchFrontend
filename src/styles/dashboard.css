@@ -1,0 +1,216 @@
+:root {
+  /* 🔹 Theme Colors & Variables */
+  --primary-color: #2196f3;
+  --hover-color: #1976d2;
+  --border-radius: 12px;
+  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --transition: all 0.3s ease;
+}
+
+/* ===========================
+   Dashboard Container
+=========================== */
+.dashboard {
+  padding: 3rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+/* ===========================
+   Dashboard Heading
+=========================== */
+.dashboard h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ===========================
+   Search Input Field
+=========================== */
+.dashboard input[type="text"] {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 2rem auto;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  backdrop-filter: blur(8px);
+  transition: var(--transition);
+}
+
+.dashboard input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 8px rgba(33, 150, 243, 0.5);
+}
+
+/* ===========================
+   Category Section Wrapper
+=========================== */
+.category-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05); /* transparent effect */
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.category-section:hover {
+  box-shadow: var(--shadow-medium);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ===========================
+   Category Section Heading
+=========================== */
+.category-section h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 0.3rem;
+  display: inline-block;
+}
+
+/* ===========================
+   Properties Grid
+=========================== */
+.properties-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+/* ===========================
+   Individual Property Card
+=========================== */
+.property-card {
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.property-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-medium);
+}
+
+.property-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+  transition: var(--transition);
+}
+
+.property-card img:hover {
+  transform: scale(1.05);
+}
+
+.property-card h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.property-card p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+}
+
+.property-card button {
+  background: linear-gradient(45deg, var(--primary-color), var(--hover-color));
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  transition: var(--transition);
+  box-shadow: var(--shadow-light);
+}
+
+.property-card button:hover {
+  background: linear-gradient(45deg, var(--hover-color), #0277bd);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-medium);
+}
+
+/* ===========================
+   Responsive Design
+=========================== */
+@media (max-width: 1024px) {
+  .properties-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .category-section {
+    padding: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .properties-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard h1 {
+    font-size: 2.5rem;
+  }
+
+  .category-section {
+    padding: 1.5rem;
+    backdrop-filter: blur(5px);
+  }
+
+  .dashboard input[type="text"] {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard h1 {
+    font-size: 2rem;
+  }
+
+  .category-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .property-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .property-card p {
+    font-size: 0.95rem;
+  }
+
+  .property-card img {
+    height: 150px;
+  }
+}

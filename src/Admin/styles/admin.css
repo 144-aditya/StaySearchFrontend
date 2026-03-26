@@ -1,0 +1,395 @@
+/* ============================================
+   SIMPLE SKY BLUE & WHITE ADMIN LAYOUT CSS
+   ============================================ */
+
+/* Root Variables */
+:root {
+  --admin-primary: #3b82f6;
+  --admin-primary-dark: #2563eb;
+  --admin-danger: #ef4444;
+  --admin-dark: #1e293b;
+  --admin-gray: #64748b;
+  --admin-gray-light: #e2e8f0;
+  --admin-white: #ffffff;
+  --admin-sky-light: #eff6ff;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --transition: all 0.3s ease;
+}
+
+/* Admin Layout */
+.admin-layout {
+  min-height: 100vh;
+  background: var(--admin-sky-light);
+}
+
+/* Admin Container */
+.admin-container {
+  display: flex;
+  min-height: calc(100vh - 64px);
+}
+
+/* ============================================
+   SIDEBAR STYLES
+   ============================================ */
+
+.admin-sidebar {
+  width: 260px;
+  background: var(--admin-white);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 64px);
+  position: sticky;
+  top: 64px;
+  left: 0;
+  border-right: 1px solid var(--admin-gray-light);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--admin-gray-light);
+}
+
+.sidebar-header h2 {
+  color: var(--admin-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-header p {
+  color: var(--admin-gray);
+  font-size: 0.75rem;
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+  flex: 1;
+  padding: 1rem 0;
+  overflow-y: auto;
+}
+
+/* Nav Items */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  background: none;
+  border: none;
+  color: var(--admin-gray);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+}
+
+.nav-item:hover {
+  background: var(--admin-sky-light);
+  color: var(--admin-primary);
+}
+
+.nav-item.active {
+  background: var(--admin-sky-light);
+  color: var(--admin-primary);
+  border-right: 3px solid var(--admin-primary);
+}
+
+.nav-item svg {
+  font-size: 1.125rem;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  padding: 1rem 0;
+  border-top: 1px solid var(--admin-gray-light);
+  margin-top: auto;
+}
+
+.nav-item.logout:hover {
+  background: #fee2e2;
+  color: var(--admin-danger);
+}
+
+/* ============================================
+   MAIN CONTENT STYLES
+   ============================================ */
+
+.admin-main {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  min-height: calc(100vh - 64px);
+}
+
+.admin-content-wrapper {
+  background: var(--admin-white);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  min-height: calc(100vh - 100px);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--admin-gray-light);
+}
+
+/* ============================================
+   TABS STYLES
+   ============================================ */
+
+.admin-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--admin-gray-light);
+  padding-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--admin-gray);
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: var(--radius-sm);
+}
+
+.tab-btn:hover {
+  color: var(--admin-primary);
+  background: var(--admin-sky-light);
+}
+
+.tab-btn.active {
+  color: var(--admin-primary);
+  background: var(--admin-sky-light);
+}
+
+/* ============================================
+   LOADING STYLES
+   ============================================ */
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  color: var(--admin-gray);
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   PAGE TITLE STYLES
+   ============================================ */
+
+.page-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--admin-dark);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--admin-primary);
+  display: inline-block;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .admin-sidebar {
+    width: 220px;
+  }
+  
+  .nav-item {
+    padding: 0.625rem 1rem;
+  }
+  
+  .admin-main {
+    padding: 1.25rem;
+  }
+  
+  .admin-content-wrapper {
+    padding: 1.25rem;
+  }
+}
+
+/* Mobile (up to 768px) */
+@media (max-width: 768px) {
+  .admin-sidebar {
+    width: 70px;
+    position: fixed;
+    z-index: 99;
+    transform: translateX(0);
+    transition: var(--transition);
+  }
+  
+  .admin-sidebar.collapsed {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar-header h2,
+  .sidebar-header p,
+  .nav-item span {
+    display: none;
+  }
+  
+  .sidebar-header {
+    padding: 1rem;
+  }
+  
+  .nav-item {
+    justify-content: center;
+    padding: 0.75rem;
+  }
+  
+  .nav-item svg {
+    margin: 0;
+  }
+  
+  .admin-main {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  
+  .admin-container {
+    min-height: calc(100vh - 56px);
+  }
+  
+  .admin-content-wrapper {
+    padding: 1rem;
+  }
+  
+  .admin-tabs {
+    flex-wrap: wrap;
+  }
+  
+  .tab-btn {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .page-title {
+    font-size: 1.125rem;
+    display: block;
+    text-align: center;
+  }
+}
+
+/* Small Mobile (up to 480px) */
+@media (max-width: 480px) {
+  .admin-sidebar {
+    width: 60px;
+  }
+  
+  .nav-item {
+    padding: 0.5rem;
+  }
+  
+  .admin-main {
+    padding: 0.75rem;
+  }
+  
+  .admin-content-wrapper {
+    padding: 0.75rem;
+  }
+  
+  .tab-btn {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .page-title {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Menu Toggle Button (Optional) */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--admin-primary);
+  color: var(--admin-white);
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  z-index: 100;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --admin-white: #1e293b;
+    --admin-gray-light: #334155;
+    --admin-gray: #94a3b8;
+    --admin-dark: #f1f5f9;
+    --admin-sky-light: #0f172a;
+  }
+  
+  .admin-layout {
+    background: #0f172a;
+  }
+  
+  .admin-sidebar {
+    background: #0f172a;
+    border-right-color: #334155;
+  }
+  
+  .admin-content-wrapper {
+    background: #0f172a;
+    border-color: #334155;
+  }
+  
+  .tab-btn:hover,
+  .tab-btn.active {
+    background: #1e293b;
+  }
+  
+  .nav-item:hover,
+  .nav-item.active {
+    background: #1e293b;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .admin-sidebar,
+  .admin-tabs {
+    display: none;
+  }
+  
+  .admin-main {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .admin-content-wrapper {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
