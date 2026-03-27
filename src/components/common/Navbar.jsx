@@ -5,6 +5,8 @@ import { FaSearch, FaHome, FaUser, FaInfoCircle, FaPhone, FaSignInAlt, FaUserPlu
 import "../../styles/global.css";
 
 function Navbar() {
+  const API_URL = "https://staysearch-fullstack-backend-production.up.railway.app/api";
+  
   const [menuOpen, setMenuOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [isLoginMode, setIsLoginMode] = useState(true);
