@@ -8,7 +8,7 @@ import AdminSettings from './AdminSettings';
 import AdminNavbar from './components/AdminNavbar';
 import '../Admin/styles/admin.css';
 
-const API_BASE_URL = 'staysearch-fullstack-backend-production.up.railway.app/api';
+const API_BASE_URL = 'https://staysearch-fullstack-backend-production.up.railway.app/api';
 
 function AdminDashboard() {
   const navigate = useNavigate();

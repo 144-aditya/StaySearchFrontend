@@ -24,7 +24,7 @@ function Profile() {
 
     // Fetch user personal information
     axios
-      .get(`staysearch-fullstack-backend-production.up.railway.app/api/staysearch/users/${userId}`)
+      .get(`https://staysearch-fullstack-backend-production.up.railway.app/api/staysearch/users/${userId}`)
       .then((res) => {
         setUserInfo(res.data);
       })
