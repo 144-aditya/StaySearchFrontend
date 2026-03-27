@@ -39,7 +39,7 @@ function Register() {
     
     try {
       const { confirmPassword, ...userData } = formData;
-      const response = await axios.post('http://localhost:8080/api/auth/register', userData);
+      const response = await axios.post('staysearch-fullstack-backend-production.up.railway.app/api/auth/register', userData);
       
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userId', response.data.userId);

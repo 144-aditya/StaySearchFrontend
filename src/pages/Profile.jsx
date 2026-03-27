@@ -24,7 +24,7 @@ function Profile() {
 
     // Fetch user personal information
     axios
-      .get(`http://localhost:8080/api/staysearch/users/${userId}`)
+      .get(`staysearch-fullstack-backend-production.up.railway.app/api/staysearch/users/${userId}`)
       .then((res) => {
         setUserInfo(res.data);
       })
@@ -34,7 +34,7 @@ function Profile() {
 
     // Fetch booking history for the user
     axios
-      .get(`http://localhost:8080/api/staysearch/bookings/user/${userId}`)
+      .get(`staysearch-fullstack-backend-production.up.railway.app/api/staysearch/bookings/user/${userId}`)
       .then((res) => {
         setBookingHistory(res.data);
       })

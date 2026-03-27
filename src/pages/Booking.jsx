@@ -160,8 +160,8 @@ function Booking() {
 
           try {
             const response = await axios.post(
-              "http://localhost:8080/api/staysearch/payments",
-              payload // ← fix: send payload, not data
+              "staysearch-fullstack-backend-production.up.railway.app/api/staysearch/payments",
+              payload // send payload, not data
             );
 
             // Save userId and redirect

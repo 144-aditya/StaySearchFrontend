@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import './styles/admin-users.css';
 
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = 'staysearch-fullstack-backend-production.up.railway.app/api';
 
 function AdminUsers({ users = [], onRefresh }) {
   const [showRoleModal, setShowRoleModal] = useState(false);
