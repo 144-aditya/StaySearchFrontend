@@ -24,8 +24,8 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await axios.post("https://staysearch-fullstack-backend-production.up.railway.app/api/auth/login", data);
-
+     const response = await axios.post("https://staysearch-fullstack-backend-production.up.railway.app/api/auth/login",formData);
+      
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userId', response.data.userId);
       localStorage.setItem('userRole', response.data.role);
