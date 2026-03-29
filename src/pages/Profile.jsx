@@ -15,6 +15,10 @@ function Profile() {
   // Stores logged-in user's personal information
   const [userInfo, setUserInfo] = useState({});
 
+  // Loading states
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
   // User ID is stored in localStorage after booking/login
   const userId = localStorage.getItem('userId');
 
@@ -22,24 +26,37 @@ function Profile() {
     // Do not call APIs if userId is missing
     if (!userId) return;
 
+    setLoading(true);
+    
     // Fetch user personal information
     axios
-      .get(`https://staysearch-fullstack-backend-production.up.railway.app/api/staysearch/users/${userId}`)
+      .get(`https://staysearch-api.onrender.com/api/staysearch/users/${userId}`)
       .then((res) => {
         setUserInfo(res.data);
       })
       .catch((err) => {
         console.error('User API error:', err);
+        setError('Failed to load user information');
       });
 
-    // Fetch booking history for the user
+    // ✅ FIXED: Correct API endpoint with https:// and correct path
     axios
-      .get(`staysearch-fullstack-backend-production.up.railway.app/api/staysearch/bookings/user/${userId}`)
+      .get(`https://staysearch-api.onrender.com/api/staysearch/bookings/user/${userId}`)
       .then((res) => {
-        setBookingHistory(res.data);
+        // ✅ Ensure response data is an array
+        if (Array.isArray(res.data)) {
+          setBookingHistory(res.data);
+        } else {
+          console.warn('Bookings API returned non-array:', res.data);
+          setBookingHistory([]);
+        }
+        setLoading(false);
       })
       .catch((err) => {
         console.error('Booking API error:', err);
+        setBookingHistory([]);
+        setError('Failed to load booking history');
+        setLoading(false);
       });
 
   }, [userId]);
@@ -47,6 +64,9 @@ function Profile() {
   // Clears session data and redirects user to home
   const handleLogout = () => {
     localStorage.removeItem('userId');
+    localStorage.removeItem('token');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('userName');
     navigate('/');
   };
 
@@ -69,10 +89,20 @@ function Profile() {
 
   // Renders booking history section
   const renderBookings = () => {
-    if (bookingHistory.length === 0) {
+    if (loading) {
+      return <div className="loading-state">Loading bookings...</div>;
+    }
+
+    if (error) {
+      return <div className="error-state">{error}</div>;
+    }
+
+    // ✅ Safety check for array
+    if (!Array.isArray(bookingHistory) || bookingHistory.length === 0) {
       return (
         <div className="empty-state">
           <h3>No Bookings Yet</h3>
+          <p>Make your first booking to see it here!</p>
         </div>
       );
     }
@@ -80,21 +110,21 @@ function Profile() {
     return (
       <div className="booking-history">
         {bookingHistory.map((booking, index) => (
-          <div key={index} className="booking-card">
+          <div key={booking.id || index} className="booking-card">
             <div className="booking-header">
-              Booking ID: {booking.id}
-              <span className="booking-status status-confirmed">
-                {booking.status}
+              Booking ID: {booking.id || booking.bookingCode}
+              <span className={`booking-status status-${(booking.status || 'pending').toLowerCase()}`}>
+                {booking.status || 'PENDING'}
               </span>
             </div>
 
             <div className="booking-details">
-              <div>Property: {booking.propertyType}</div>
-              <div>Room: {booking.roomType}</div>
-              <div>Branch: {booking.branch}</div>
-              <div>Check-in: {booking.checkIn}</div>
-              <div>Duration: {booking.duration} month(s)</div>
-              <div>Amount: ₹{booking.amount}</div>
+              <div>Property: {booking.propertyType || 'N/A'}</div>
+              <div>Room: {booking.roomType || 'N/A'}</div>
+              <div>Branch: {booking.branch || 'N/A'}</div>
+              <div>Check-in: {booking.checkIn || 'N/A'}</div>
+              <div>Duration: {booking.duration || 'N/A'} month(s)</div>
+              <div>Amount: ₹{booking.amount || '0'}</div>
             </div>
           </div>
         ))}
@@ -105,10 +135,10 @@ function Profile() {
   // Renders personal information section
   const renderPersonalInfo = () => (
     <div className="personal-info">
-      <div>Name: {userInfo.name}</div>
-      <div>Email: {userInfo.email}</div>
-      <div>Phone: {userInfo.phone}</div>
-      <div>Address: {userInfo.address}</div>
+      <div><strong>Name:</strong> {userInfo.name || 'N/A'}</div>
+      <div><strong>Email:</strong> {userInfo.email || 'N/A'}</div>
+      <div><strong>Phone:</strong> {userInfo.phone || 'N/A'}</div>
+      <div><strong>Address:</strong> {userInfo.address || 'N/A'}</div>
     </div>
   );
 
@@ -119,8 +149,8 @@ function Profile() {
         <div className="profile-avatar">
           {getInitials(userInfo.name)}
         </div>
-        <h2>{userInfo.name}</h2>
-        <p>{userInfo.email}</p>
+        <h2>{userInfo.name || 'User'}</h2>
+        <p>{userInfo.email || 'No email'}</p>
 
         <button onClick={handleLogout} className="logout-btn">
           Logout
@@ -130,10 +160,16 @@ function Profile() {
       {/* Main content area */}
       <div className="profile-main">
         <div className="profile-tabs">
-          <button onClick={() => setActiveTab('bookings')}>
+          <button 
+            className={activeTab === 'bookings' ? 'active' : ''}
+            onClick={() => setActiveTab('bookings')}
+          >
             My Bookings
           </button>
-          <button onClick={() => setActiveTab('personal')}>
+          <button 
+            className={activeTab === 'personal' ? 'active' : ''}
+            onClick={() => setActiveTab('personal')}
+          >
             Personal Info
           </button>
         </div>

@@ -39,7 +39,8 @@ function Register() {
     
     try {
       const { confirmPassword, ...userData } = formData;
-      const response = await axios.post('https://staysearch-fullstack-backend-production.up.railway.app/api/auth/register', userData);
+      // ✅ CHANGED: Updated to Render backend URL
+      const response = await axios.post('https://staysearch-api.onrender.com/api/auth/register', userData);
       
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userId', response.data.userId);

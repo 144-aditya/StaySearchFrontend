@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './styles/admin-settings.css';
 
-const API_BASE_URL = 'https://staysearch-fullstack-backend-production.up.railway.app/api';
+const API_BASE_URL = 'https://staysearch-api.onrender.com/api';
 
 function AdminSettings({ onRefresh }) {
   const [currentPassword, setCurrentPassword] = useState('');

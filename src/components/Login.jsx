@@ -5,7 +5,7 @@ import '../styles/login.css';
 
 function Login() {
   const navigate = useNavigate();
-  const location = useLocation(); // NEW: get redirect location
+  const location = useLocation();
   const from = location.state?.from || null;
 
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -20,22 +20,22 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Sending Data:", formData);
-      console.log("Form Submitted"); // ye add karo
+    console.log("Form Submitted");
     setLoading(true);
 
     try {
-      const response = await axios.post('https://staysearch-fullstack-backend-production.up.railway.app/api/auth/login', formData);
+      // CHANGE THIS URL to your Render backend
+      const response = await axios.post('https://staysearch-api.onrender.com/api/auth/login', formData);
 
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userId', response.data.userId);
       localStorage.setItem('userRole', response.data.role);
       localStorage.setItem('userName', response.data.name);
 
-      // Redirect based on role OR original requested page
-     if (response.data.role === 'ADMIN') {
-        navigate('/admin');   //admin ko admin panel bhejo
+      if (response.data.role === 'ADMIN') {
+        navigate('/admin');
       } else {
-        navigate('/');        // normal user
+        navigate('/');
       }
 
     } catch (err) {

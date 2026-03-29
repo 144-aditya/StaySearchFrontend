@@ -160,7 +160,7 @@ function Booking() {
 
           try {
             const response = await axios.post(
-              `https://staysearch-fullstack-backend-production.up.railway.app/api/staysearch/payments`,
+              `https://staysearch-api.onrender.com/api/staysearch/payments`,
               payload // send payload, not data
             );
 

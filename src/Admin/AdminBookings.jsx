@@ -40,7 +40,7 @@ function AdminBookings({ bookings = [], onRefresh }) {
       
       try {
         await axios.put(
-          `https://staysearch-fullstack-backend-production.up.railway.app/api/staysearch/bookings/${bookingId}/cancel`,
+          `https://staysearch-api.onrender.com/api/staysearch/bookings/${bookingId}/cancel`,
           {},
           { headers: { Authorization: `Bearer ${token}` } }
         );
